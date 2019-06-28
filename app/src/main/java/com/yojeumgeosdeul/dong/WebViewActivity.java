@@ -33,6 +33,8 @@ public void init_webView() {
     daum_webView = (WebView) findViewById(R.id.daum_webview);
     // JavaScript 허용
     daum_webView.getSettings().setJavaScriptEnabled(true);
+    
+    daum_webView.getSettings().setSupportMultipleWindows(true);
     // JavaScript의 window.open 허용
     daum_webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
     // JavaScript이벤트에 대응할 함수를 정의 한 클래스를 붙여줌
