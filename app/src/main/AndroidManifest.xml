@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+ 
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
@@ -16,6 +17,7 @@
             android:usesCleartextTraffic="true"
             tools:ignore="GoogleAppIndexingWarning"
             tools:targetApi="n">
+                  <activity android:name=".MyPagePopupActivity"></activity>
         <activity android:name=".MainDetailActivity">
         </activity>
         <activity android:name=".LoginActivity" />
@@ -24,7 +26,7 @@
         <activity android:name=".ChattyActivity" />
         <activity android:name=".WebViewActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
