@@ -35,7 +35,7 @@ public void init_webView() {
     daum_webView.getSettings().setJavaScriptEnabled(true);//자바스크립트 허용
     daum_webView.getSettings().setLoadWithOverviewMode(true);//컨텐츠가 웹뷰보다 클 경우 스크린 크기에 맞게 조정
     // WebView 설정
-    daum_webView.getSettings().setDomStorageEnabled(true);
+  //  daum_webView.getSettings().setDomStorageEnabled(true);
     daum_webView.getSettings().setSupportMultipleWindows(false);
     // JavaScript의 window.open 허용
     daum_webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
