@@ -49,7 +49,8 @@ public void init_webView() {
     
     // webview url load. php 파일 주소
     
-    daum_webView.loadUrl("http://YuChocopie.github.io/Dongnebangne/app/src/main/java/com/yojeumgeosdeul/dong/assets/daum.html");
+    daum_webView.loadUrl("https://YuChocopie.github" +
+            ".io/Dongnebangne/app/src/main/java/com/yojeumgeosdeul/dong/assets/daum.html");
     
 }
 
