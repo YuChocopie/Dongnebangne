@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="50dp"
+        android:background="@color/gray2"
+        android:paddingStart="40dp"
+        android:paddingEnd="40dp">
+    <ImageView
+            android:id="@+id/btnHome"
+            android:layout_height="32dp"
+            android:layout_width="32dp"
+            android:src="@drawable/ic_list"
+            app:layout_constraintHorizontal_chainStyle="spread_inside"
+            app:layout_constraintEnd_toStartOf="@+id/btnIdea"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+    />
+
+    <ImageView
+            android:id="@+id/btnIdea"
+            android:layout_height="32dp"
+            android:layout_width="32dp"
+            android:src="@drawable/ic_lightbulb"
+            app:layout_constraintEnd_toStartOf="@+id/btnChatty"
+            app:layout_constraintStart_toEndOf="@id/btnHome"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+    />
+    <ImageView
+            android:id="@+id/btnChatty"
+            android:layout_height="32dp"
+            android:layout_width="32dp"
+            android:src="@drawable/ic_chat_bubble_outline"
+            app:layout_constraintEnd_toStartOf="@+id/btnMyPage"
+            app:layout_constraintStart_toEndOf="@id/btnIdea"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+    />
+
+    <ImageView
+            android:id="@+id/btnMyPage"
+            android:layout_height="32dp"
+            android:layout_width="32dp"
+            android:src="@drawable/ic_person_outline"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnChatty"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+    />
+
+</android.support.constraint.ConstraintLayout>

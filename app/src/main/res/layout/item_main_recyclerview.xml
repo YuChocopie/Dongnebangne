@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp">
+
+    <ImageView
+        android:id="@+id/ivMainItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tvMainStore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:lineSpacingExtra="3sp"
+        android:text="TextView"
+        android:textColor="@color/MainOrange"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ivMainItem"
+        app:layout_constraintTop_toTopOf="@+id/ivMainItem" />
+
+    <TextView
+        android:id="@+id/tvMainStoreDong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:lineSpacingExtra="3sp"
+        android:text="TextView"
+        android:textColor="@color/MainOrange"
+        app:layout_constraintBottom_toBottomOf="@+id/tvMainStore"
+        app:layout_constraintStart_toEndOf="@+id/tvMainStore"
+        app:layout_constraintTop_toTopOf="@+id/tvMainStore" />
+
+    <TextView
+        android:id="@+id/tvGainPersent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="@+id/tvMainStore"
+        app:layout_constraintTop_toBottomOf="@+id/tvMainStore" />
+
+    <ImageView
+        android:id="@+id/ivGraphBase"
+        android:layout_width="200dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:tint="@color/gray0"
+        app:layout_constraintStart_toEndOf="@+id/ivMainItem"
+        app:layout_constraintTop_toBottomOf="@+id/tvGainPersent"
+        app:srcCompat="@drawable/circle_10" />
+
+    <ImageView
+        android:id="@+id/ivGraph"
+
+        android:layout_width="137dp"
+        android:layout_height="0dp"
+        android:background="@drawable/circle_10"
+        android:tint="@color/MainOrange"
+        app:layout_constraintBottom_toBottomOf="@+id/ivGraphBase"
+        app:layout_constraintStart_toStartOf="@+id/ivGraphBase"
+        app:layout_constraintTop_toTopOf="@+id/ivGraphBase"
+        app:srcCompat="@drawable/circle_10" />
+
+    <TextView
+        android:id="@+id/tvMainPersent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textStyle="bold"
+        android:textColor="@color/white5"
+        android:text="TextView"
+        android:textSize="13dp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivGraphBase"
+        app:layout_constraintEnd_toEndOf="@+id/ivGraphBase"
+        app:layout_constraintStart_toStartOf="@+id/ivGraph"
+        app:layout_constraintTop_toTopOf="@+id/ivGraphBase" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMainItem"
+        app:layout_constraintStart_toStartOf="@+id/ivGraph"
+        app:layout_constraintTop_toBottomOf="@+id/tvMainPersent" />
+
+    <ImageView
+        android:id="@+id/ivMainItem2"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/ivMainItem"
+        app:layout_constraintTop_toBottomOf="@+id/ivMainItem" />
+
+    <TextView
+        android:id="@+id/tvLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="tvlocation"
+        android:textColor="@color/gray0"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ivMainItem2"
+        app:layout_constraintStart_toEndOf="@+id/ivMainItem2"
+        app:layout_constraintTop_toTopOf="@+id/ivMainItem2" />
+
+</android.support.constraint.ConstraintLayout>
