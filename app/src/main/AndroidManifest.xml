@@ -21,7 +21,7 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".MapActivity" />
         <activity android:name=".MyPageActivity" />
-        <activity android:name=".CtattyActivity" />
+        <activity android:name=".ChattyActivity" />
         <activity android:name=".WebViewActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

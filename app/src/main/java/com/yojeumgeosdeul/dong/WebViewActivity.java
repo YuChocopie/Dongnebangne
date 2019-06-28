@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.View;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -12,7 +13,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.TextView;
 
-public class WebViewActivity extends AppCompatActivity {
+public class WebViewActivity extends BaseActivity {
 private WebView daum_webView;
 private TextView daum_result;
 private Handler handler;
@@ -61,5 +62,30 @@ private class AndroidBridge {
         });
     }
 }
+    public void btnClick(View view) {
+        String choice = "";
+        switch (view.getId()) {
+            case R.id.btnHome:
+                choice = "main";
+                onClickBottomBar(choice);
+                break;
+            
+            case R.id.btnChatty:
+                choice = "chatty";
+                onClickBottomBar(choice);
+                break;
+            
+            case R.id.btnMap:
+                choice = "map";
+                onClickBottomBar(choice);
+                break;
+            
+            case R.id.btnMyPage:
+                choice = "mypage";
+                onClickBottomBar(choice);
+                break;
+        }
+        
+    }
 
 }

@@ -3,12 +3,13 @@ package com.yojeumgeosdeul.dong;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
 
-public class MapActivity extends BaseActivity {
+public class ChattyActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_map);
+        setContentView(R.layout.activity_ctatty);
     }
     public void btnClick(View view) {
         String choice = "";
@@ -22,7 +23,7 @@ public class MapActivity extends BaseActivity {
                 choice = "chatty";
                 onClickBottomBar(choice);
                 break;
-                
+            
             case R.id.btnMyPage:
                 choice = "mypage";
                 onClickBottomBar(choice);
