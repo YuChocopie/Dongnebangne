@@ -6,7 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
@@ -19,14 +19,13 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyPageActivity extends AppCompatActivity  {
+public class MyPageActivity extends BaseActivity  {
 
     
     private MyPageRecyclerAdapter adapter;
   //  private static final String DEFAULT_PATTERN = "%d%%";
     private CircleProgressBar circleProgressBar;
-
-
+ 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,6 +149,25 @@ public class MyPageActivity extends AppCompatActivity  {
         adapter = new MyPageRecyclerAdapter(dataList);
         recyclerView.setAdapter(adapter);
 
+    } 
+    public void btnClick(View view) {
+        String choice = "";
+        switch (view.getId()) {
+            case R.id.btnHome:
+                choice = "main";
+                onClickBottomBar(choice);
+                break;
+            
+            case R.id.btnChatty:
+                choice = "chatty";
+                onClickBottomBar(choice);
+                break;
+            
+            case R.id.btnMap:
+                choice = "map";
+                onClickBottomBar(choice);
+                break;
+        }
+        
     }
-
-}
+ }

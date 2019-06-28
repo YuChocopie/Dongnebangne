@@ -11,18 +11,19 @@
             android:layout_height="32dp"
             android:layout_width="32dp"
             android:src="@drawable/ic_list"
+            android:onClick="btnClick"
             app:layout_constraintHorizontal_chainStyle="spread_inside"
-            app:layout_constraintEnd_toStartOf="@+id/btnIdea"
+            app:layout_constraintEnd_toStartOf="@+id/btnMap"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-    />
+            app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-            android:id="@+id/btnIdea"
+            android:id="@+id/btnMap"
             android:layout_height="32dp"
             android:layout_width="32dp"
             android:src="@drawable/ic_lightbulb"
+            android:onClick="btnClick"
             app:layout_constraintEnd_toStartOf="@+id/btnChatty"
             app:layout_constraintStart_toEndOf="@id/btnHome"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -32,9 +33,10 @@
             android:id="@+id/btnChatty"
             android:layout_height="32dp"
             android:layout_width="32dp"
+            android:onClick="btnClick"
             android:src="@drawable/ic_chat_bubble_outline"
             app:layout_constraintEnd_toStartOf="@+id/btnMyPage"
-            app:layout_constraintStart_toEndOf="@id/btnIdea"
+            app:layout_constraintStart_toEndOf="@id/btnMap"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toTopOf="parent"
     />
@@ -42,7 +44,7 @@
     <ImageView
             android:id="@+id/btnMyPage"
             android:layout_height="32dp"
-            android:layout_width="32dp"
+            android:layout_width="32dp" android:onClick="btnClick"
             android:src="@drawable/ic_person_outline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/btnChatty"

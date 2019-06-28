@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainDetailActivity">
+
+
+    <include
+            android:id="@+id/layoutHashTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/item_main_hashtag"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    <include
+            android:id="@+id/layoutHashTop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/item_maindetail_top"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/layoutHashTag"
+            app:layout_constraintStart_toStartOf="@+id/layoutHashTag"
+            android:layout_marginStart="8dp" />
+
+    <include
+            android:id="@+id/layoutHashGraph"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            layout="@layout/item_maindetail_graph"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/layoutHashTop"
+            app:layout_constraintStart_toStartOf="@+id/layoutHashTop"
+            android:layout_marginStart="8dp" />
+</android.support.constraint.ConstraintLayout>

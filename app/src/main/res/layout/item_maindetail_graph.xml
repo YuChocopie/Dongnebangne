@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:choco="http://schemas.android./com.yojeumgeosdeul.dong"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <TextView
+            android:id="@+id/tvLovely"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="5sp"
+            android:text="펀딩에 대한 평가 \n13개"
+            android:textSize="13sp"
+            android:textColor="@color/black2"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+            android:id="@+id/ivLovelyIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:tint="@color/green"
+            android:src="@drawable/ic_star"
+            app:layout_constraintStart_toStartOf="@+id/tvLovely"
+            app:layout_constraintTop_toBottomOf="@+id/tvLovely" />
+
+    <TextView
+            android:id="@+id/tvLovelyTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="2.4"
+            android:textColor="@color/green"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivLovelyIcon"
+            app:layout_constraintStart_toEndOf="@+id/ivLovelyIcon"
+            app:layout_constraintTop_toTopOf="@+id/ivLovelyIcon" />
+
+    <com.yojeumgeosdeul.dong.GraphView
+            android:id="@+id/GraphView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            choco:textColor="#ec4800"
+            choco:textSize="15sp"
+            choco:textGap="2dp"
+            choco:lineColor="@color/green"
+            choco:lineThickness="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvLovely"
+            android:layout_marginStart="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvLovelyTotal" />
+
+
+</android.support.constraint.ConstraintLayout>
