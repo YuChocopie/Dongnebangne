@@ -1,49 +1,82 @@
 package com.yojeumgeosdeul.dong;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
 import android.webkit.JavascriptInterface;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
-import android.webkit.WebViewClient;
+import android.widget.TextView;
 
 public class WebViewActivity extends AppCompatActivity {
-    private WebView browser;
+private WebView daum_webView;
+private TextView daum_result;
+private Handler handler;
 
-    class MyJavaScriptInterface {
-        @JavascriptInterface
-        @SuppressWarnings("unused")
-        public void processDATA(String data) {
-
-            Bundle extra = new Bundle();
-            Intent intent = new Intent();
-            extra.putString("data", data);
-            intent.putExtras(extra);
-            setResult(RESULT_OK, intent);
-            finish();
-        }
-    }
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_web_view);
+    daum_result = (TextView) findViewById(R.id.daum_result);
+    // WebView 초기화
+    init_webView();
+    // 핸들러를 통한 JavaScript 이벤트 반응
+    handler = new Handler();
+}
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_web_view);
-        browser = (WebView) findViewById(R.id.webView);
-        browser.getSettings().setJavaScriptEnabled(true);
-        browser.addJavascriptInterface(new MyJavaScriptInterface(), "Android");
-
-        browser.setWebViewClient(new WebViewClient() {
-            @Override
-            public void onPageFinished(WebView view, String url) {
-
-                browser.loadUrl("javascript:sample2_execDaumPostcode();");
-            }
-        });
-
-        //browser.loadUrl("file:///android_asset/.html");
-        https://github.com/YuChocopie/Dongnebangne/tree/master/app/src/main/assets/daum.html
-        browser.loadUrl("http://cdn.rawgit.com//YuChocopie/Dongnebangne/tree/master/app/src/main/assets/daum.html");
+public void init_webView() {
+    // WebView 설정
+    daum_webView = (WebView) findViewById(R.id.daum_webview);
+    // JavaScript 허용
+    daum_webView.getSettings().setJavaScriptEnabled(true);
     
+    
+    // JavaScript의 window.open 허용
+    
+    daum_webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
+    
+    
+    // JavaScript이벤트에 대응할 함수를 정의 한 클래스를 붙여줌
+    
+    daum_webView.addJavascriptInterface(new AndroidBridge(), "TestApp");
+    
+    
+    // web client 를 chrome 으로 설정
+    
+    daum_webView.setWebChromeClient(new WebChromeClient());
+    
+    
+    // webview url load. php 파일 주소
+    
+    daum_webView.loadUrl("http://YuChocopie.github.io/Dongnebangne/app/src/main/java/com/yojeumgeosdeul/dong/assets/daum.html");
+    
+}
+
+
+private class AndroidBridge {
+    
+    @JavascriptInterface
+    
+    public void setAddress(final String arg1, final String arg2, final String arg3) {
+        
+        handler.post(new Runnable() {
+            
+            @Override
+            
+            public void run() {
+                
+                daum_result.setText(String.format("(%s) %s %s", arg1, arg2, arg3));
+                
+                // WebView를 초기화 하지않으면 재사용할 수 없음
+                
+                init_webView();
+                
+            }
+            
+        });
+        
     }
+    
+}
 }
