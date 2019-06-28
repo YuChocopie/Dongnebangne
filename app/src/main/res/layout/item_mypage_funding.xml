@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/textPlace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="사푼사푼이 망원동으로"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:text="목표금액 : "
+        app:layout_constraintStart_toEndOf="@+id/circleprogressbar"
+        app:layout_constraintTop_toTopOf="@+id/circleprogressbar" />
+
+    <com.dinuscxj.progressbar.CircleProgressBar
+        android:id="@+id/circleprogressbar"
+
+        android:max="100"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/textPlace"
+        app:layout_constraintTop_toBottomOf="@+id/textPlace" />
+
+    <TextView
+        android:id="@+id/textFunding"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="펀딩된 자산 : "
+        app:layout_constraintStart_toStartOf="@+id/textGoal"
+        app:layout_constraintTop_toBottomOf="@+id/textGoal" />
+
+    <TextView
+        android:id="@+id/textMyFunding"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_marginTop="8dp"
+        android:text="내가 펀딩한 자산 : "
+        app:layout_constraintStart_toStartOf="@+id/textFunding"
+        app:layout_constraintTop_toBottomOf="@+id/textFunding" />
+
+    <TextView
+        android:id="@+id/textPeople"
+        android:layout_width="wrap_content"
+        android:layout_height="19dp"
+        android:layout_marginTop="8dp"
+        android:text="투자 인원 : "
+        app:layout_constraintStart_toStartOf="@+id/textMyFunding"
+        app:layout_constraintTop_toBottomOf="@+id/textMyFunding" />
+
+    <TextView
+        android:id="@+id/textProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="진행률 : "
+        app:layout_constraintStart_toEndOf="@+id/circleprogressbar"
+        app:layout_constraintStart_toStartOf="@+id/textPeople"
+        app:layout_constraintTop_toBottomOf="@+id/textPeople" />
+
+</android.support.constraint.ConstraintLayout>
