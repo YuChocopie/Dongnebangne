@@ -1,13 +1,15 @@
 package com.yojeumgeosdeul.dong;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 
 public class WebViewActivity extends AppCompatActivity {
@@ -24,17 +26,17 @@ protected void onCreate(Bundle savedInstanceState) {
     init_webView();
     // 핸들러를 통한 JavaScript 이벤트 반응
     handler = new Handler();
+    
 }
-
 
 @SuppressLint("SetJavaScriptEnabled")
 public void init_webView() {
-    // WebView 설정
     daum_webView = (WebView) findViewById(R.id.daum_webview);
-    // JavaScript 허용
-    daum_webView.getSettings().setJavaScriptEnabled(true);
-    
-    daum_webView.getSettings().setSupportMultipleWindows(true);
+    daum_webView.getSettings().setJavaScriptEnabled(true);//자바스크립트 허용
+    daum_webView.getSettings().setLoadWithOverviewMode(true);//컨텐츠가 웹뷰보다 클 경우 스크린 크기에 맞게 조정
+    // WebView 설정
+    daum_webView.getSettings().setDomStorageEnabled(true);
+    daum_webView.getSettings().setSupportMultipleWindows(false);
     // JavaScript의 window.open 허용
     daum_webView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
     // JavaScript이벤트에 대응할 함수를 정의 한 클래스를 붙여줌
