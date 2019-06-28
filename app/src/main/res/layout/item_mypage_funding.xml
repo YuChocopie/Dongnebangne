@@ -4,7 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white5">
 
 
     <TextView
@@ -29,8 +30,13 @@
 
     <com.dinuscxj.progressbar.CircleProgressBar
         android:id="@+id/circleprogressbar"
-
         android:max="100"
+        app:style="solid_line"
+        app:progress_stroke_width="3dp"
+        app:progress_background_color="@color/MainOrange"
+        app:progress_start_color="@color/MainBlue"
+        app:progress_end_color="@color/black4"
+        app:progress_text_color="@color/black0"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginStart="8dp"
@@ -50,7 +56,7 @@
     <TextView
         android:id="@+id/textMyFunding"
         android:layout_width="wrap_content"
-        android:layout_height="15dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="내가 펀딩한 자산 : "
         app:layout_constraintStart_toStartOf="@+id/textFunding"
@@ -59,7 +65,7 @@
     <TextView
         android:id="@+id/textPeople"
         android:layout_width="wrap_content"
-        android:layout_height="19dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="투자 인원 : "
         app:layout_constraintStart_toStartOf="@+id/textMyFunding"
