@@ -9,23 +9,18 @@
      style="display:block;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
 
 </div>
-<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js?autoload=false"></script>
 <script>
-    new daum.Postcode({
-        oncomplete: function(data) {
-            if(data.userSelectedType=="R"){
-                // userSelectedType : 검색 결과에서 사용자가 선택한 주소의 타입
-                // return type : R - roadAddress, J : jibunAddress
-                // TestApp 은 안드로이드에서 등록한 이름
-                window.TestApp.setAddress(data.zonecode, data.roadAddress, data.buildingName);
+    //load함수를 이용하여 core스크립트의 로딩이 완료된 후, 우편번호 서비스를 실행합니다.
+    daum.postcode.load(function(){
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+                // 예제를 참고하여 다양한 활용법을 확인해 보세요.
             }
-            else{
-                window.TestApp.setAddress(data.zonecode, data.jibunAddress, data.buildingName);
-            }
-        }
-    }).open();
+        }).open();
+    });
 </script>
-
 
 </body>
 </html>
