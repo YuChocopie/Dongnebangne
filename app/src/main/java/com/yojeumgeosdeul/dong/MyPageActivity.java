@@ -8,13 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
-
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
- import android.support.v7.widget.LinearLayoutManager;
-
 import android.support.v7.widget.LinearLayoutManager;
-
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -31,6 +25,7 @@ public class MyPageActivity extends BaseActivity {
     
     
     private MyPageRecyclerAdapter adapter;
+
 
   //  private static final String DEFAULT_PATTERN = "%d%%";
     private CircleProgressBar circleProgressBar;
@@ -119,6 +114,7 @@ public class MyPageActivity extends BaseActivity {
                 @Override
                 public void onClick(View v) {
 
+
                     Intent i = new Intent(getApplicationContext(),MyPageFundingMake.class);
                     startActivityForResult(i,101);
                 }
@@ -179,13 +175,9 @@ public class MyPageActivity extends BaseActivity {
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
 
-
-                    
                     Intent intent = new Intent(String.valueOf(MyPagePopupActivity.class));
                     startActivity(intent);
                     
-                    
-
                 }
             });
             
@@ -214,8 +206,6 @@ public class MyPageActivity extends BaseActivity {
             });
         }
 
-
-
         adapter = new MyPageRecyclerAdapter(dataList);
         recyclerView.setAdapter(adapter);
     }
@@ -241,7 +231,6 @@ public class MyPageActivity extends BaseActivity {
         }
     }
 
-        
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -272,45 +261,7 @@ public class MyPageActivity extends BaseActivity {
             circleProgressBar.setProgress(70);
         }
     }
-
-
-//    void callGraph() {
-////        new ViewTreeObserver.OnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-////
-////
-////            circleProgressBar.setProgressFormatter((progress, max) -> {
-////                final String DEFAULT_PATTERN = "%d퍼센트"; return String.format(DEFAULT_PATTERN
-////                        , (int) ((float) progress / (float) max * 100)); });
-////
-//////            public void onGlobalLayout() {
-//////                circleProgressBar.setProgress(70);
-//////                circleProgressBar.setProgressFormatter(new CircleProgressBar.ProgressFormatter() {
-//////                    @Override
-//////                    public CharSequence format(int progress, int max) {
-//////                        final String DEFAULT_PATTERN
-//////                                = "%d퍼센트";
-//////                        return String.format(DEFAULT_PATTERN, (int) ((float) progress / (float) max * 100));
-//////                    }
-//////                });
-//////            }
-////        }) {
-////
-////        };
-////    }
-/////*
-//        circleProgressBar = (CircleProgressBar)findViewById(R.id.circleprogressbar);
-//        circleProgressBar.setProgressFormatter(new CircleProgressBar.ProgressFormatter() {
-//            @Override
-//            public CharSequence format(int progress, int max) {
-//                final String DEFAULT_PATTERN = "%d퍼센트";
-//                return String.format(DEFAULT_PATTERN, (int) ((float) progress / (float) max * 100));
-//            }
-//        });
-//        circleProgressBar.setMax(100);
-//        circleProgressBar.setProgress(70);
-//*/
-//
-
+ 
     
     public void btnClick(View view) {
         String choice = "";
