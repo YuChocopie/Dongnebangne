@@ -25,7 +25,7 @@ public class MyPageRecyclerAdapter extends RecyclerView.Adapter<MyPageRecyclerAd
         TextView textFunding;
         TextView textMyFunding;
         TextView textPeople;
-        TextView textProgress;
+//        TextView textProgress;
         CircleProgressBar circleProgressBar;
 
         public ViewHolder(View view){
@@ -35,7 +35,7 @@ public class MyPageRecyclerAdapter extends RecyclerView.Adapter<MyPageRecyclerAd
             textFunding = view.findViewById(R.id.textFunding);
             textMyFunding = view.findViewById(R.id.textMyFunding);
             textPeople = view.findViewById(R.id.textPeople);
-            textProgress = view.findViewById(R.id.textProgress);
+//            textProgress = view.findViewById(R.id.textProgress);
             circleProgressBar = view.findViewById(R.id.circleprogressbar);
         }
 
@@ -53,7 +53,7 @@ public class MyPageRecyclerAdapter extends RecyclerView.Adapter<MyPageRecyclerAd
     public void onBindViewHolder(@NonNull MyPageRecyclerAdapter.ViewHolder viewHolder, int i) {
         MyPageFunding mypageFunding = mDataList.get(i);
         viewHolder.textFunding.setText(mypageFunding.getFunding());
-        viewHolder.textProgress.setText(mypageFunding.getProgress());
+//        viewHolder.textProgress.setText(mypageFunding.getProgress());
         viewHolder.textPeople.setText(mypageFunding.getPeople());
         viewHolder.textMyFunding.setText(mypageFunding.getMyFunding());
         viewHolder.textGoal.setText(mypageFunding.getGoal());

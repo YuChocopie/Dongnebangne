@@ -1,23 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white5">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:background="@drawable/circle_10"
+    android:paddingStart="15dp"
+    android:paddingTop="15dp"
+    android:paddingEnd="15dp">
 
 
     <TextView
         android:id="@+id/textPlace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="12dp"
         android:text="사푼사푼이 망원동으로"
+        android:textColor="@color/black0"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.dinuscxj.progressbar.CircleProgressBar
+        android:id="@+id/circleprogressbar"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
+        android:max="100"
+        app:drawBackgroundOutsideProgress="true"
+        app:layout_constraintStart_toStartOf="@+id/textPlace"
+        app:layout_constraintTop_toBottomOf="@+id/textPlace"
+        app:progress_background_color="@color/MainOrange"
+        app:progress_end_color="@color/black4"
+        app:progress_shader="sweep"
+        app:progress_start_color="@color/MainBlue"
+        app:progress_start_degree="-90"
+        app:progress_stroke_width="3dp"
+        app:progress_text_color="@color/black0"
+        app:style="solid_line" />
 
     <TextView
         android:id="@+id/textGoal"
@@ -25,24 +46,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:text="목표금액 : "
-        app:layout_constraintStart_toEndOf="@+id/circleprogressbar"
-        app:layout_constraintTop_toTopOf="@+id/circleprogressbar" />
-
-    <com.dinuscxj.progressbar.CircleProgressBar
-        android:id="@+id/circleprogressbar"
-        android:max="100"
-        app:style="solid_line"
-        app:progress_stroke_width="3dp"
-        app:progress_background_color="@color/MainOrange"
-        app:progress_start_color="@color/MainBlue"
-        app:progress_end_color="@color/black4"
-        app:progress_text_color="@color/black0"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/textPlace"
-        app:layout_constraintTop_toBottomOf="@+id/textPlace" />
+        android:textColor="@color/black2"
+        app:layout_constraintBottom_toTopOf="@id/textFunding"
+        app:layout_constraintStart_toEndOf="@id/circleprogressbar"
+        app:layout_constraintTop_toTopOf="@id/circleprogressbar" />
 
     <TextView
         android:id="@+id/textFunding"
@@ -50,6 +57,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="펀딩된 자산 : "
+        android:textColor="@color/black2"
+
+        app:layout_constraintBottom_toTopOf="@id/textMyFunding"
+
         app:layout_constraintStart_toStartOf="@+id/textGoal"
         app:layout_constraintTop_toBottomOf="@+id/textGoal" />
 
@@ -59,6 +70,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="내가 펀딩한 자산 : "
+
+        android:textColor="@color/black2"
+        app:layout_constraintBottom_toTopOf="@id/textPeople"
         app:layout_constraintStart_toStartOf="@+id/textFunding"
         app:layout_constraintTop_toBottomOf="@+id/textFunding" />
 
@@ -68,17 +82,17 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="투자 인원 : "
+
+        android:textColor="@color/black2"
+        app:layout_constraintBottom_toBottomOf="@+id/circleprogressbar"
         app:layout_constraintStart_toStartOf="@+id/textMyFunding"
         app:layout_constraintTop_toBottomOf="@+id/textMyFunding" />
 
-    <TextView
-        android:id="@+id/textProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="진행률 : "
-        app:layout_constraintStart_toEndOf="@+id/circleprogressbar"
-        app:layout_constraintStart_toStartOf="@+id/textPeople"
-        app:layout_constraintTop_toBottomOf="@+id/textPeople" />
-
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/gray2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/circleprogressbar" />
 </android.support.constraint.ConstraintLayout>

@@ -1,36 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainDetailActivity">
+
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainDetailActivity">
+        app:layout_constraintBottom_toTopOf="@id/btnFunding"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
 
-    <include
-            android:id="@+id/layoutHashTag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            layout="@layout/item_main_hashtag"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-    <include
-            android:id="@+id/layoutHashTop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            layout="@layout/item_maindetail_top"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/layoutHashTag"
-            app:layout_constraintStart_toStartOf="@+id/layoutHashTag"
-            android:layout_marginStart="8dp" />
+            <ImageView
+                android:id="@+id/ivMainDetail"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:src="@drawable/excafe"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <include
-            android:id="@+id/layoutHashGraph"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            layout="@layout/item_maindetail_graph"
-            android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/layoutHashTop"
-            app:layout_constraintStart_toStartOf="@+id/layoutHashTop"
-            android:layout_marginStart="8dp" />
+            <ImageView
+                android:id="@+id/iv"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                android:src="@color/ImageBg"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvMainText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@color/ImageBg"
+                android:text="사뿐사뿐이 찾아옵니다"
+                android:textColor="@color/gray2"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@id/ivMainDetail"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/layoutHashTag"
+                layout="@layout/item_main_hashtag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ivMainDetail" />
+
+            <include
+                android:id="@+id/layoutHashTop"
+                layout="@layout/item_maindetail_top"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/layoutHashTag"
+                app:layout_constraintTop_toBottomOf="@+id/layoutHashTag" />
+
+            <include
+                android:id="@+id/layoutHashGraph"
+                layout="@layout/item_maindetail_graph"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintStart_toStartOf="@+id/layoutHashTop"
+                app:layout_constraintTop_toBottomOf="@+id/layoutHashTop" />
+
+            <include
+                android:id="@+id/layoutDetailMap"
+                layout="@layout/item_map"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/layoutHashGraph"
+                app:layout_constraintTop_toBottomOf="@+id/layoutHashGraph" />
+
+            <include
+                android:id="@+id/layoutDetailLongText"
+                layout="@layout/item_detail_longtext"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/layoutDetailMap"
+                app:layout_constraintTop_toBottomOf="@+id/layoutDetailMap" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:background="@color/gray1"
+                android:gravity="center"
+                android:text="투자자와 대화하기"
+                android:textColor="@color/gray2"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutDetailLongText" />
+        </android.support.constraint.ConstraintLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/btnFunding"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@color/MainOrange"
+        android:gravity="center"
+        android:text="투자하기"
+        android:textColor="@color/gray2"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
