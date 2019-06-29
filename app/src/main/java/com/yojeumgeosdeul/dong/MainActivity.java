@@ -23,10 +23,24 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        MainList mainlist = new MainList("dd", "", "dd", "dd", "dd", "dd", "dd");
-        for (int i = 0; i < 5; i++) {
-            list.add(mainlist);
-        }
+        MainList mainList = new MainList("@drawable/excafe", "사뿐사뿐", "망원동 ", "수익율 : 8.3%",
+                "달성률 : 40%", "10일 20시간 남음", "장소 : 서울특별시 강남구 역삼동 테헤란로 142");
+        MainList mainList1 = new MainList("@drawable/excafe","아메리카노장인","가락동","수익율 : 4.2%",
+                "달성률 : 12%","3일 1시간 남음","장소 : 서울특별시 가락시장로 12-4");
+        MainList mainList2 = new MainList("@drawable/excafe","빚은","신사동","수익율 : 5.5%",
+                "달성률 : 54%","12일 17시간 남음","서울특별시 신사로 127");
+        MainList mainList3 = new MainList("@drawable/excafe","블링블링","문래동","수익율 : 2.9%",
+                "달서률 : 77%","1일 23시간 남음","서울특별시 문래로 9");
+        MainList mainList4 = new MainList("@drawable/excafe","건강한 의자","청담동","수익율 : 6.0%",
+                "달성률 : 81%","14일 9시간 남음","서울특별시 청담로 88-43");
+        
+        list.add(mainList);
+        list.add(mainList1);
+        list.add(mainList2);
+        list.add(mainList3);
+        list.add(mainList4);
+        
+        
         
         // 리사이클러뷰에 LinearLayoutManager 객체 지정.
         RecyclerView recyclerView = findViewById(R.id.rvMain);

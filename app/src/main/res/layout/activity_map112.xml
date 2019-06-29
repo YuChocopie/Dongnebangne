@@ -1,19 +1,22 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
 
-              android:layout_width="match_parent"
-
-              android:layout_height="match_parent" xmlns:app="http://schemas.android.com/apk/res-auto"
-
-              android:orientation="vertical">
+        xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:orientation="vertical"
+                tools:context=".MapActivity">
 
     
-<RelativeLayout
+<net.daum.android.map.MapView
         android:id="@+id/mapView"
-        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
         >
 
-</RelativeLayout>
+</net.daum.android.map.MapView>
 
     <include
             layout="@layout/item_global_bottom"

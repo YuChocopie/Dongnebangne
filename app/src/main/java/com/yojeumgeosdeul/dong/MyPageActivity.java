@@ -42,7 +42,7 @@ public class MyPageActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
-        
+     /*
         String url = "https://dev-openapi.kbstar.com:8443/hackathon/getAccountBalance";
         StringRequest request = new StringRequest(
                 Request.Method.GET,
@@ -61,9 +61,9 @@ public class MyPageActivity extends BaseActivity {
                 }
         );
     
-    
-        request.setShouldCache(false);
-        AppHelper.requestQueue.add(request);
+    */
+      //  request.setShouldCache(false);
+       // AppHelper.requestQueue.add(request);
         
         
         
@@ -85,6 +85,9 @@ public class MyPageActivity extends BaseActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        
+        
+       
         
         
         int chk = 1;//사장일 경우 0, 고객일 경우 1
@@ -134,9 +137,9 @@ public class MyPageActivity extends BaseActivity {
             dataList.add(new MyPageFunding("가로수길에서 악세사리가게", "목표금액 : 150,000,000원", "펀딩된 자산 : 100,000,000원",
                     "투자인원 : 2명", "진행률 : 67%", "", circleProgressBar));
             
-            header = getLayoutInflater().inflate(R.layout.item_mypage_funding, null, false);
-            TextView textMyFunding = (TextView) header.findViewById(R.id.textMyFunding);
-            textMyFunding.setVisibility(View.GONE);
+         //   header = getLayoutInflater().inflate(R.layout.item_mypage_funding, null, false);
+           // TextView textMyFunding = (TextView) header.findViewById(R.id.textMyFunding);
+            //textMyFunding.setVisibility(View.GONE);
     
     
             //백그라운드 색상변경
@@ -202,6 +205,12 @@ public class MyPageActivity extends BaseActivity {
                 }
             });
         }
+        
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new MyPageRecyclerAdapter(dataList);
+        recyclerView.setAdapter(adapter);
 
     }
     @Override
@@ -225,7 +234,7 @@ public class MyPageActivity extends BaseActivity {
         }
     }
 
-    
+    /*
     public void processResponse(String response){
         Gson gson = new Gson();
         DataList dataList = gson.fromJson(response,DataList.class);
@@ -240,7 +249,7 @@ public class MyPageActivity extends BaseActivity {
         
     }
 
-    
+    */
     
     
 //    void callGraph() {
@@ -279,7 +288,7 @@ public class MyPageActivity extends BaseActivity {
 //        circleProgressBar.setProgress(70);
 //*/
 //
-
+/*
     @Override
     protected void onResume() {
         super.onResume();
@@ -297,7 +306,7 @@ public class MyPageActivity extends BaseActivity {
         }
     }
  
-
+*/
     
     public void btnClick(View view) {
         String choice = "";
