@@ -1,128 +1,135 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="16dp">
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/item_recycler_main"
+        android:background="@color/white5">
 
     <ImageView
-        android:id="@+id/ivMainItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background" />
+            android:id="@+id/ivMainItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/tvMainStore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:lineSpacingExtra="3sp"
-        android:text="사뿐사뿐"
-        android:textSize="13sp"
-        android:textColor="@color/MainOrange"
-        android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/ivMainItem"
-        app:layout_constraintTop_toTopOf="@+id/ivMainItem" />
+            android:id="@+id/tvMainStore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:lineSpacingExtra="3sp"
+            android:text="사뿐사뿐"
+            android:textSize="13sp"
+            android:textColor="@color/MainOrange"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/ivMainItem"
+            app:layout_constraintTop_toTopOf="@+id/ivMainItem" />
 
     <TextView
-        android:id="@+id/tvMainStoreDong"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:lineSpacingExtra="3sp"
-        android:textSize="13sp"
-        android:text="이 망원동으로 찾아갑니다!"
-        android:textColor="@color/MainOrange"
-        app:layout_constraintBottom_toBottomOf="@+id/tvMainStore"
-        app:layout_constraintStart_toEndOf="@+id/tvMainStore"
-        app:layout_constraintTop_toTopOf="@+id/tvMainStore" />
+            android:id="@+id/tvMainStoreDong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="3sp"
+            android:textSize="13sp"
+            android:text="이 망원동으로 찾아갑니다!"
+            android:textColor="@color/MainOrange"
+            app:layout_constraintBottom_toBottomOf="@+id/tvMainStore"
+            app:layout_constraintStart_toEndOf="@+id/tvMainStore"
+            app:layout_constraintTop_toTopOf="@+id/tvMainStore" />
 
     <TextView
-        android:id="@+id/tvGainPersent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="수익률 8.3%"
-        app:layout_constraintEnd_toEndOf="@+id/ivGraphBase"
-        app:layout_constraintStart_toStartOf="@+id/tvMainStore"
-        app:layout_constraintTop_toBottomOf="@+id/ivGraphBase" />
+            android:id="@+id/tvGainPersent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="수익률 8.3%"
+            app:layout_constraintEnd_toEndOf="@+id/ivGraphBase"
+            app:layout_constraintStart_toStartOf="@+id/tvMainStore"
+            app:layout_constraintTop_toBottomOf="@+id/ivGraphBase" />
 
     <ImageView
-        android:id="@+id/ivGraphBase"
-        android:layout_width="200dp"
-        android:layout_height="17dp"
-        android:layout_marginTop="10dp"
-        android:tint="@color/gray0"
-        app:layout_constraintStart_toStartOf="@+id/tvMainStore"
-        app:layout_constraintTop_toBottomOf="@+id/tvMainStoreDong"
-        app:srcCompat="@drawable/circle_10" />
+            android:id="@+id/ivGraphBase"
+            android:layout_width="200dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="10dp"
+            android:tint="@color/gray0"
+            app:layout_constraintStart_toStartOf="@+id/tvMainStore"
+            app:layout_constraintTop_toBottomOf="@+id/tvMainStoreDong"
+            app:srcCompat="@drawable/circle_10" />
 
     <ImageView
-        android:id="@+id/ivGraph"
-        android:layout_width="80dp"
-        android:layout_height="0dp"
-        android:background="@drawable/circle_10"
-        android:tint="@color/MainOrange"
-        app:layout_constraintBottom_toBottomOf="@+id/ivGraphBase"
-        app:layout_constraintStart_toStartOf="@+id/ivGraphBase"
-        app:layout_constraintTop_toTopOf="@id/ivGraphBase"
-        app:srcCompat="@drawable/circle_10" />
+            android:id="@+id/ivGraph"
+            android:layout_width="80dp"
+            android:layout_height="0dp"
+            android:background="@drawable/circle_10"
+            android:tint="@color/MainOrange"
+            app:layout_constraintBottom_toBottomOf="@+id/ivGraphBase"
+            app:layout_constraintStart_toStartOf="@+id/ivGraphBase"
+            app:layout_constraintTop_toTopOf="@id/ivGraphBase"
+            app:srcCompat="@drawable/circle_10" />
 
     <TextView
-        android:id="@+id/tvMainPersent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="달성률 40%"
-        android:textColor="@color/white5"
-        android:textSize="13dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/ivGraphBase"
-        app:layout_constraintEnd_toEndOf="@+id/ivGraphBase"
-        app:layout_constraintStart_toStartOf="@+id/ivGraphBase"
-        app:layout_constraintTop_toTopOf="@+id/ivGraphBase" />
+            android:id="@+id/tvMainPersent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="달성률 40%"
+            android:textColor="@color/white5"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivGraphBase"
+            app:layout_constraintEnd_toEndOf="@+id/ivGraphBase"
+            app:layout_constraintStart_toStartOf="@+id/ivGraphBase"
+            app:layout_constraintTop_toTopOf="@+id/ivGraphBase" />
 
     <TextView
-        android:id="@+id/tvTime"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:text="10일 20시간 남음"
-        android:textSize="13sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivMainItem"
-        app:layout_constraintEnd_toEndOf="@+id/ivGraphBase"
-        app:layout_constraintHorizontal_bias="0.455"
-        app:layout_constraintStart_toStartOf="@+id/ivGraph"
-        app:layout_constraintTop_toBottomOf="@+id/tvGainPersent"
-        app:layout_constraintVertical_bias="1.0" />
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="10일 20시간 남음"
+            android:textSize="13sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivMainItem"
+            app:layout_constraintEnd_toEndOf="@+id/ivGraphBase"
+            app:layout_constraintHorizontal_bias="0.455"
+            app:layout_constraintStart_toStartOf="@+id/ivGraph"
+            app:layout_constraintTop_toBottomOf="@+id/tvGainPersent"
+            app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/ivMainItem2"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:tint="@color/gray1"
-        android:src="@drawable/ic_location"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/ivMainItem"
-        app:layout_constraintTop_toBottomOf="@+id/ivMainItem" />
+            android:id="@+id/ivMainItem2"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:tint="@color/gray1"
+            android:src="@drawable/ic_location"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/ivMainItem"
+            app:layout_constraintTop_toBottomOf="@+id/ivMainItem" />
 
     <TextView
-        android:id="@+id/tvLocation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="장소 : 서울특별시 강남구 역삼동 테헤란로 142"
-        android:textColor="@color/gray0"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/ivMainItem2"
-        app:layout_constraintStart_toEndOf="@+id/ivMainItem2"
-        app:layout_constraintTop_toTopOf="@+id/ivMainItem2" />
+            android:id="@+id/tvLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="장소 : 서울특별시 강남구 역삼동 테헤란로 142"
+            android:textColor="@color/gray0"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/ivMainItem2"
+            app:layout_constraintStart_toEndOf="@+id/ivMainItem2"
+            app:layout_constraintTop_toTopOf="@+id/ivMainItem2" />
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:background="@color/gray2"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -2,12 +2,11 @@
 <android.support.constraint.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:choco="http://schemas.android./com.yojeumgeosdeul.dong"
-
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
     <TextView
+
             android:id="@+id/tvLovely"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -29,7 +28,8 @@
             android:tint="@color/green"
             android:src="@drawable/ic_star"
             app:layout_constraintStart_toStartOf="@+id/tvLovely"
-            app:layout_constraintTop_toBottomOf="@+id/tvLovely" />
+            app:layout_constraintTop_toBottomOf="@+id/tvLovely"
+    app:layout_constraintBottom_toBottomOf="@id/GraphView"/>
 
     <TextView
             android:id="@+id/tvLovelyTotal"
@@ -47,17 +47,18 @@
     <com.yojeumgeosdeul.dong.GraphView
             android:id="@+id/GraphView"
             android:layout_width="200dp"
-            android:layout_height="200dp"
-            choco:textColor="#ec4800"
-            choco:textSize="15sp"
-            choco:textGap="2dp"
-            choco:lineColor="@color/green"
-            choco:lineThickness="20dp"
+            android:layout_height="180dp"
+            app:textColor="#ec4800"
+            app:textSize="15sp"
+            app:textGap="2dp"
+            app:lineColor="@color/green"
+            app:lineThickness="12dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
+            android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/tvLovely"
-            android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/tvLovelyTotal" />
 
 
