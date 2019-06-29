@@ -22,30 +22,30 @@
                   android:minLines="2" />
           </android.support.design.widget.TextInputLayout>-->
 
-
     <TextView
         android:id="@+id/tv_search_bar"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:background="@color/white5"
         android:gravity="center"
-        android:text="@string/msg_search_address"
+        android:text="서울특별시 송파구 가락본동"
         android:textColor="@color/black5"
         android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
         android:id="@+id/button"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginStart="16dp"
-        android:src="@drawable/ic_location"
+        android:layout_marginEnd="16dp"
+        android:src="@drawable/ic_search"
         android:tint="@color/black5"
         app:layout_constraintBottom_toBottomOf="@id/tv_search_bar"
-        app:layout_constraintStart_toStartOf="@id/tv_search_bar"
+        app:layout_constraintEnd_toEndOf="@id/tv_search_bar"
         app:layout_constraintTop_toTopOf="@id/tv_search_bar" />
 
 

@@ -14,6 +14,7 @@
     <color name="gray1">#868686</color>
     <color name="gray2">#e8e8e8</color>
     <color name="gray3">#f3f3f3</color>
+    <color name="ImageBg">#8F414141</color>
 
     <color name="MainBlue">#395CDD</color>
     <color name="MainOrange">#FF9117</color>
