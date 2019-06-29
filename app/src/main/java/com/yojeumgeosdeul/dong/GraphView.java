@@ -31,9 +31,10 @@ class GraphView extends View {
         
         //수치 옵션
         Paint paint = new Paint();
-        paint.setColor(types.getColor(R.styleable.GraphView_textColor, Color.BLACK));
-        paint.setTextSize(types.getDimension(R.styleable.GraphView_textSize, 0));
+        paint.setColor(types.getColor(R.styleable.GraphView_textColor, getResources().getColor(R.color.green)));
+        paint.setTextSize(types.getDimension(R.styleable.GraphView_textSize, 10));
         paint.setTextAlign(Paint.Align.CENTER);
+        paint.setStrokeWidth(20f);
         mTextPaint = paint;
         
         //막대와 수치와의 거리
@@ -63,7 +64,7 @@ class GraphView extends View {
         float gapx = (float) getWidth() / points.length;
         
         //y축 단위 사이의 거리
-        float gapy = height / mDivide;
+        float gapy = (float) (height / (mDivide*1.2));
         
         float halfgab = gapx / 2;
         
@@ -74,7 +75,7 @@ class GraphView extends View {
         for (int i = 0; i < length; i++) {
             //막대 좌표를 구한다
             int x = (int) (halfgab + (i * gapx));
-            int y = (int) (height - (((points[i] / mUnit) - mOrigin) * gapy));
+            int y = (int) (height - (((points[i] / mUnit*0.8) - mOrigin) * gapy));
     
             mPointX[i] = x;
             mPointY[i] = y;
