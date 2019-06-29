@@ -1,160 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout2"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white3"
-    tools:context=".MyPageActivity">
+
+
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white3"
+        tools:context=".MyPageActivity">
+
 
     <TextView
-        android:id="@+id/topText"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="20dp"
-        android:gravity="end|bottom"
-        android:text="펀딩 글을 쓰려면"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toStartOf="@+id/topClick"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/topText"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:gravity="end|bottom"
+            android:text="펀딩 글을 쓰려면"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/topClick"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/topClick"
-        android:layout_width="0dp"
-        android:layout_height="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="end|bottom"
-        android:text="Click!"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            android:id="@+id/topClick"
+            android:layout_width="0dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:gravity="end|bottom"
+            android:text="Click!"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
 
-        android:id="@+id/constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="180dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/circle_10"
 
-        android:backgroundTint="@color/MainOrange"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@id/topClick">
-
-        <ImageView
-            android:id="@+id/imageCustomer"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:id="@+id/constraintLayout"
+            android:layout_width="0dp"
+            android:layout_height="160dp"
             android:layout_marginStart="20dp"
-            android:src="@drawable/ic_char_1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textCustomer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:text="고 객"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/textCustomerContent"
-            app:layout_constraintHorizontal_bias="0.005"
-            app:layout_constraintStart_toEndOf="@+id/imageCustomer"
-            app:layout_constraintTop_toTopOf="@+id/imageCustomer"
-            app:layout_constraintVertical_chainStyle="spread_inside" />
-
-        <TextView
-            android:id="@+id/textCustomerContent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="QR코드로 할인을 받아보세요!"
-            app:layout_constraintBottom_toTopOf="@+id/imageQR"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/circle_10"
+            android:backgroundTint="@color/MainOrange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/textCustomer"
-            app:layout_constraintTop_toBottomOf="@+id/textCustomer" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topClick">
 
         <ImageView
-            android:id="@+id/imageQR"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageCustomer"
-            app:layout_constraintStart_toStartOf="@+id/textCustomerContent"
-            app:layout_constraintTop_toBottomOf="@+id/textCustomerContent"
-            app:srcCompat="@android:drawable/sym_def_app_icon" />
+                android:id="@+id/imageCustomer"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_char_1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+        />
+        <TextView
+
+                android:id="@+id/textCustomer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="김유정 고객님"
+                android:textStyle="bold"
+                android:textColor="@color/white5"
+                android:textSize="16sp"
+                app:layout_constraintVertical_chainStyle="spread_inside"
+                app:layout_constraintStart_toEndOf="@+id/imageCustomer"
+                app:layout_constraintTop_toTopOf="@+id/imageCustomer"
+                app:layout_constraintBottom_toTopOf="@+id/textCustomerContent"
+        />
+
+        <TextView
+                android:id="@+id/textCustomerContent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QR코드로 할인을 받아보세요!"
+                app:layout_constraintBottom_toTopOf="@+id/imageQR"
+                app:layout_constraintStart_toStartOf="@+id/textCustomer"
+                app:layout_constraintTop_toBottomOf="@+id/textCustomer" />
+
+        <ImageView
+                android:id="@+id/imageQR"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                app:layout_constraintBottom_toBottomOf="@+id/imageCustomer"
+                app:layout_constraintStart_toStartOf="@+id/textCustomerContent"
+                app:srcCompat="@drawable/qrcode" app:layout_constraintTop_toBottomOf="@+id/textCustomerContent" />
     </android.support.constraint.ConstraintLayout>
 
 
     <TextView
-        android:id="@+id/presentContent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/circle_10"
-        android:lineSpacingExtra="4dp"
-        android:padding="10dp"
-        android:text="보유자산 :\n펀딩한 금액: "
-        android:textColor="@color/black2"
-        android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPresent">
 
-
-    </TextView>
-
+            android:id="@+id/textPresent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:text="내 자산 보유 현황"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
     <TextView
-        android:id="@+id/textPresent"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:text="내 자산 보유 현황"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="@+id/constraintLayout"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+            android:id="@+id/presentContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:text="보유자산 :\n펀딩한 금액: "
+            android:background="@color/white5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textPresent" />
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/include"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPresentFunding" />
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/presentContent" />
 
-
-    <include
-        android:id="@+id/include"
-        layout="@layout/item_global_bottom"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textPresentFunding"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
-        android:text="내 펀딩 현황"
-        android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/presentContent" />
 
 </android.support.constraint.ConstraintLayout>
+

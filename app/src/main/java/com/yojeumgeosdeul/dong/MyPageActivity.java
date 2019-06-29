@@ -1,10 +1,12 @@
 package com.yojeumgeosdeul.dong;
 
 import android.animation.ValueAnimator;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,9 +25,19 @@ public class MyPageActivity extends BaseActivity {
     
     
     private MyPageRecyclerAdapter adapter;
+
+
+  //  private static final String DEFAULT_PATTERN = "%d%%";
+    private CircleProgressBar circleProgressBar;
+    private View header;
+    List<MyPageFunding> dataList = new ArrayList<>();
+    RecyclerView recyclerView;
+ 
+
     //  private static final String DEFAULT_PATTERN = "%d%%";
     CircleProgressBar circleProgressBar;
     
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +55,25 @@ public class MyPageActivity extends BaseActivity {
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
         
         textCustomer.setTypeface(null, Typeface.BOLD);
+
+        textPresent.setTypeface(null,Typeface.BOLD);
+        textPresentFunding.setTypeface(null,Typeface.BOLD);
+    
+    
+    
+    
+    
+    
+        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+    
+       
+
+
+        int chk = 0;//사장일 경우 0, 고객일 경우 1
+        if(chk == 0){
+
         textPresent.setTypeface(null, Typeface.BOLD);
         textPresentFunding.setTypeface(null, Typeface.BOLD);
         // textPlace.setTypeface(null,Typeface.BOLD);
@@ -59,6 +90,7 @@ public class MyPageActivity extends BaseActivity {
         
         int chk = 0;//사장일 경우 0, 고객일 경우 1
         if (chk == 1) {
+
             //click 사업자로 변경
             topText.setText("펀딩 글을 쓰려면 ");
             topText.setTextColor(getResources().getColor(R.color.MainBlue));
@@ -76,9 +108,35 @@ public class MyPageActivity extends BaseActivity {
             //자산현황 숨기기
             textPresent.setVisibility(View.GONE);
             presentContent.setVisibility(View.GONE);
+            
+            //펀드작성
             topClick.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+
+                    Intent i = new Intent(getApplicationContext(),MyPageFundingMake.class);
+                    startActivityForResult(i,101);
+                }
+            });
+            //백그라운드 색상변경
+            constraintLayout.setBackgroundTintList(getResources().getColorStateList(R.color.MainBlue));
+            
+            //사업자일 경우(리사이클러뷰)
+            dataList.add(new MyPageFunding("망원동에서 버블티가게","목표금액 : 100,000,000원","펀딩된 자산 : 10,000,000원",
+                    "투자인원 : 2명", "진행률 : 10%","",circleProgressBar));
+            dataList.add(new MyPageFunding("가락시장에서 생선가게","목표금액 : 200,000,000원","펀딩된 자산 : 40,000,000원",
+                    "투자인원 : 3명","진행률 : 20%","",circleProgressBar));
+            dataList.add(new MyPageFunding("가로수길에서 악세사리가게","목표금액 : 150,000,000원","펀딩된 자산 : 100,000,000원",
+                    "투자인원 : 2명","진행률 : 67%","",circleProgressBar));
+            
+            header = getLayoutInflater().inflate(R.layout.item_mypage_funding,null,false);
+            TextView textMyFunding = (TextView)header.findViewById(R.id.textMyFunding);
+            textMyFunding.setVisibility(View.GONE);
+          
+        }
+        else{
+
                 
                 }
             });
@@ -86,6 +144,7 @@ public class MyPageActivity extends BaseActivity {
             //백그라운드 색상변경
             constraintLayout.setBackgroundTintList(getResources().getColorStateList(R.color.MainBlue));
         } else {
+
             //고객으로 이름 변경
             textCustomer.setText("고 객");
             textCustomerContent.setText("QR코드로 할인을 받아보세요!");
@@ -103,22 +162,75 @@ public class MyPageActivity extends BaseActivity {
             presentContent.setVisibility(View.VISIBLE);
             //textPresentContent.setVisibility(View.VISIBLE);
             //고객 QR코드 보이기
+            
             imageQR.setVisibility(View.VISIBLE);
             imageQR.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MyPageActivity.this);
+                    builder.setTitle("QR CODE를 인식해주세요");
+                    builder.setView(R.layout.page_dialog);
                     
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+
                     Intent intent = new Intent(String.valueOf(MyPagePopupActivity.class));
                     startActivity(intent);
-                    
                     
                 }
             });
             
             //백그라운드 색상 변경
             constraintLayout.setBackgroundTintList(getResources().getColorStateList(R.color.MainOrange));
+            
+            
+            //고객일 경우(리사이클러뷰)
+    
+            dataList.add(new MyPageFunding("망원동에서 버블티가게","목표금액 : 100,000,000원","펀딩된 자산 : 10,000,000원","내가 펀딩한 자산 : 5,000,000원",
+                    "투자인원 : 2명", "진행률 : 10%",circleProgressBar));
+            dataList.add(new MyPageFunding("가락시장에서 생선가게","목표금액 : 200,000,000원","펀딩된 자산 : 40,000,000원","내가 펀딩한 자산 : 10,000,000원",
+                    "투자인원 : 3명","진행률 : 20%",circleProgressBar));
+            dataList.add(new MyPageFunding("가로수길에서 악세사리가게","목표금액 : 150,000,000원","펀딩된 자산 : 100,000,000원","내가 펀딩한 자산 : 50,000,000원",
+                    "투자인원 : 2명","진행률 : 67%",circleProgressBar));
+    
+            //맨위에 글자 clikc눌렀을 경우 -> 채팅으로
+            topClick.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    
+                    Intent i = new Intent(getApplicationContext(),ChattyActivity.class);
+                    startActivity(i);
+            
+                }
+            });
         }
-        
+
+        adapter = new MyPageRecyclerAdapter(dataList);
+        recyclerView.setAdapter(adapter);
+    }
+    
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 101){
+            if(resultCode == RESULT_OK){
+                String name = data.getStringExtra("name");
+                String location = data.getStringExtra("location");
+                String goal = data.getStringExtra("goal");
+                
+                
+                dataList.add(new MyPageFunding(location + "에서 " + name, "목표금액 : " + goal+"원", "펀딩된 자산 : 0원", "투자인원 : 0원", "진행률 : 0%",
+                        "", circleProgressBar));
+                recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+                recyclerView.setLayoutManager(layoutManager);
+                adapter = new MyPageRecyclerAdapter(dataList);
+                recyclerView.setAdapter(adapter);
+            }
+        }
+    }
+
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -149,44 +261,7 @@ public class MyPageActivity extends BaseActivity {
             circleProgressBar.setProgress(70);
         }
     }
-
-
-//    void callGraph() {
-////        new ViewTreeObserver.OnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-////
-////
-////            circleProgressBar.setProgressFormatter((progress, max) -> {
-////                final String DEFAULT_PATTERN = "%d퍼센트"; return String.format(DEFAULT_PATTERN
-////                        , (int) ((float) progress / (float) max * 100)); });
-////
-//////            public void onGlobalLayout() {
-//////                circleProgressBar.setProgress(70);
-//////                circleProgressBar.setProgressFormatter(new CircleProgressBar.ProgressFormatter() {
-//////                    @Override
-//////                    public CharSequence format(int progress, int max) {
-//////                        final String DEFAULT_PATTERN
-//////                                = "%d퍼센트";
-//////                        return String.format(DEFAULT_PATTERN, (int) ((float) progress / (float) max * 100));
-//////                    }
-//////                });
-//////            }
-////        }) {
-////
-////        };
-////    }
-/////*
-//        circleProgressBar = (CircleProgressBar)findViewById(R.id.circleprogressbar);
-//        circleProgressBar.setProgressFormatter(new CircleProgressBar.ProgressFormatter() {
-//            @Override
-//            public CharSequence format(int progress, int max) {
-//                final String DEFAULT_PATTERN = "%d퍼센트";
-//                return String.format(DEFAULT_PATTERN, (int) ((float) progress / (float) max * 100));
-//            }
-//        });
-//        circleProgressBar.setMax(100);
-//        circleProgressBar.setProgress(70);
-//*/
-//
+ 
     
     public void btnClick(View view) {
         String choice = "";
