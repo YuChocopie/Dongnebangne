@@ -7,40 +7,32 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
 import android.view.View;
-import com.google.android.gms.maps.*;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import android.view.ViewGroup;
 
-public class MapActivity extends BaseActivity implements OnMapReadyCallback {
+
+import net.daum.mf.map.api.MapView;
+
+
+public class MapActivity extends BaseActivity {
     
-    private GoogleMap googleMap;
+  
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map112);
     
-        SupportMapFragment mapFragment = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
+        MapView mapView = new MapView(this);
+    
+        ViewGroup mapViewContainer = (ViewGroup)findViewById(R.id.mapView);
         
-        mapFragment.getMapAsync(this);
+        mapViewContainer.addView(mapView);
         
+      
     }
     
    
     
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        LatLng SEOUL = new LatLng(37.56, 126.97);
-    
-        MarkerOptions markerOptions = new MarkerOptions();
-        markerOptions.position(SEOUL);
-        markerOptions.title("서울");
-        markerOptions.snippet("한국의 수도");
-        googleMap.addMarker(markerOptions);
-    
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(SEOUL));
-        googleMap.animateCamera(CameraUpdateFactory.zoomTo(10));
-    }
     
     public void btnClick(View view) {
         String choice = "";

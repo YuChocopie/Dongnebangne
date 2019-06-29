@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
               android:layout_width="match_parent"
 
@@ -6,16 +6,14 @@
 
               android:orientation="vertical">
 
-    <com.google.android.gms.maps.MapView
-            android:id="@+id/map"
-            android:layout_width="match_parent"
-            android:layout_height="600dp"
-    >
+    
+<RelativeLayout
+        android:id="@+id/mapView"
+        android:layout_width="match_parent" android:layout_height="match_parent"
 
+        >
 
-
-    </com.google.android.gms.maps.MapView>
-
+</RelativeLayout>
 
     <include
             layout="@layout/item_global_bottom"
@@ -23,7 +21,8 @@
             android:layout_height="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+
+            android:layout_alignBottom="@+id/mapView" />
 
 
-</LinearLayout>
+</RelativeLayout>

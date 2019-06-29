@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "622888201504",
+    "firebase_url": "https://hack-kb-kisa.firebaseio.com",
+    "project_id": "hack-kb-kisa",
+    "storage_bucket": "hack-kb-kisa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:622888201504:android:fcac27cb639a0f0a",
+        "android_client_info": {
+          "package_name": "com.yojeumgeosdeul.dong"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "622888201504-hlg83h8t2ut3dgo7q7cvu5cv2jq5apo1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoj3cr6naEJGY669RDbbRrzo2s9y_HN98"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "622888201504-hlg83h8t2ut3dgo7q7cvu5cv2jq5apo1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

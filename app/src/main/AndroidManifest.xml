@@ -35,6 +35,8 @@
                     android:name="com.google.android.geo.API_KEY"
                     android:value="AIzaSyB5cqmuHFA6SrGoC52rtYGrgUrqH_hsHg8" />
 
+            <meta-data android:name="com.kakao.sdk.AppKey" android:value="c7212401fbc94e4cf77b5a4def76cb5e"/>
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
