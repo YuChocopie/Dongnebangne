@@ -54,14 +54,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textGoal" />
 
     <TextView
-        android:id="@+id/textMyFunding"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="내가 펀딩한 자산 : "
-        app:layout_constraintStart_toStartOf="@+id/textFunding"
-        app:layout_constraintTop_toBottomOf="@+id/textFunding" />
-
+            android:id="@+id/textMyFunding"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="내가 펀딩한 자산 : "
+            app:layout_constraintStart_toStartOf="@+id/textFunding"
+            app:layout_constraintTop_toBottomOf="@+id/textFunding" />
     <TextView
         android:id="@+id/textPeople"
         android:layout_width="wrap_content"
