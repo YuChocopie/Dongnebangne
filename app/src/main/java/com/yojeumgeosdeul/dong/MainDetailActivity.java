@@ -17,7 +17,8 @@ public class MainDetailActivity extends AppCompatActivity {
         GraphView graphview = findViewById(R.id.GraphView);
 
 //단위는 1씩, 원점은 0, 총 10줄로 나누어진 그래프를 그린다
-        graphview.setPoints(points, 1, 0, 10);
+        graphview.setPoints(points, 1, 0, 5);
         graphview.drawForBeforeDrawView();
     }
+    
 }

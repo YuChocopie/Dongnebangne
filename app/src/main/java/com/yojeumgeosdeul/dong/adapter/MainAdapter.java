@@ -1,6 +1,7 @@
 package com.yojeumgeosdeul.dong.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.yojeumgeosdeul.dong.BaseActivity;
+import com.yojeumgeosdeul.dong.MainActivity;
+import com.yojeumgeosdeul.dong.MainDetailActivity;
 import com.yojeumgeosdeul.dong.R;
 import com.yojeumgeosdeul.dong.model.MainList;
 
@@ -26,6 +30,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         TextView tvMainPersent;
         TextView tvTime;
         TextView tvLocation;
+        View layout;
         
         ViewHolder(View itemView) {
             super(itemView);
@@ -36,6 +41,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
             tvMainPersent = itemView.findViewById(R.id.tvMainPersent);
             tvTime = itemView.findViewById(R.id.tvTime);
             tvLocation = itemView.findViewById(R.id.tvLocation);
+            layout = itemView.findViewById(R.id.item_recycler_main);
         }
         
     }
@@ -65,7 +71,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
     */
     
     @Override
-    public void onBindViewHolder(MainAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(MainAdapter.ViewHolder holder, final int position) {
 //        holder.ivMainItem.setImageURI(Uri.parse(mData.get(position).getIvMainItem()));
         holder.tvMainStore.setText(mData.get(position).getTvMainStore());
         holder.tvMainStoreDong.setText(mData.get(position).getTvMainStoreDong());
@@ -73,6 +79,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
         holder.tvMainPersent.setText(mData.get(position).getTvMainPersent());
         holder.tvTime.setText(mData.get(position).getTvTime());
         holder.tvLocation.setText(mData.get(position).getTvLocation());
+        holder.layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View holder) {
+                Intent intent = new Intent(holder.getContext(), MainDetailActivity.class);
+                holder.getContext().startActivities(new Intent[]{intent});
+            }
+        });
     }
     
     @Override

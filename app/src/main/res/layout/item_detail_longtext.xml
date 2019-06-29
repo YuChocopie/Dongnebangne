@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:text="추가설명"
+        android:textColor="@color/black4"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvMainDetailLongText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="10dp"
+        android:lineSpacingExtra="4dp"
+        android:text="세븐비어(주)는 소규모맥주제조 면허를 보유한 회사입니다. 소규모 맥주회사의 가장 큰 경쟁력 있는 상품군은 바로 '생맥주' 입니다. 실제로 대형마트나 편의점에 패키징 형태로 입점되는 맥주들은 수익을 창출하기가 상당히 어렵습니다. 전국을 상대로 해야하는 시장이며, 가격경쟁력부터 마케팅까지 대기업 수준의 투자가 진행되어야 브랜딩이 가능한 시장입니다.
+
+세븐비어(주)는 소규모맥주회사에서 가장 경쟁력있는 생맥주생산 유통만을 위해 운영되는 만큼 생맥주 품질과 유통의 최적화를 이룬 회사라 말씀드릴 수 있습니다. 모회사인 세븐브로이맥주의 오랜 유통 경험과 유통망, 그리고 상온유통 수제맥주에 최적화된 생산 시설과 공정관리로 수제 생맥주의 품질을 최우선으로 하고 있습니다."
+        android:textColor="@color/black5"
+        android:textSize="13sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvText" />
+</android.support.constraint.ConstraintLayout>

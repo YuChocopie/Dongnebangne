@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
 import android.view.View;
 import android.widget.EditText;
 import com.yojeumgeosdeul.dong.adapter.MainAdapter;
@@ -34,6 +35,8 @@ public class MainActivity extends BaseActivity {
         // 리사이클러뷰에 SimpleTextAdapter 객체 지정.
         MainAdapter adapter = new MainAdapter(list);
         recyclerView.setAdapter(adapter);
+        View item_recycler_main = findViewById(R.id.item_recycler_main);
+    
     }
     
     public void btnClick(View view) {
