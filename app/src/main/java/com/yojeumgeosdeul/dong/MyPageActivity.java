@@ -1,6 +1,7 @@
 package com.yojeumgeosdeul.dong;
 
 import android.animation.ValueAnimator;
+import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -8,13 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
-
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
- import android.support.v7.widget.LinearLayoutManager;
-
 import android.support.v7.widget.LinearLayoutManager;
-
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -37,8 +32,7 @@ import static android.view.ViewTreeObserver.*;
 public class MyPageActivity extends BaseActivity {
     
     private MyPageRecyclerAdapter adapter;
-    
-    //  private static final String DEFAULT_PATTERN = "%d%%";
+
     private CircleProgressBar circleProgressBar;
     private View header;
     List<MyPageFunding> dataList = new ArrayList<>();
@@ -122,9 +116,11 @@ public class MyPageActivity extends BaseActivity {
             topClick.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
     
                     Intent i = new Intent(getApplicationContext(), MyPageFundingMake.class);
                     startActivityForResult(i, 101);
+
                 }
             });
             //백그라운드 색상변경
@@ -176,8 +172,9 @@ public class MyPageActivity extends BaseActivity {
                     
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
-    
-    
+
+
+
                 }
             });
             
@@ -205,12 +202,8 @@ public class MyPageActivity extends BaseActivity {
                 }
             });
         }
-        
-        
-        adapter = new MyPageRecyclerAdapter(dataList);
-        recyclerView.setAdapter(adapter);
+
     }
-    
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -231,16 +224,22 @@ public class MyPageActivity extends BaseActivity {
             }
         }
     }
+
     
     public void processResponse(String response){
         Gson gson = new Gson();
         DataList dataList = gson.fromJson(response,DataList.class);
         Dataitem dataitem = gson.fromJson(response,Dataitem.class);
-        
+
+
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
         TextView presentContent = (TextView)findViewById(R.id.presentContent);
         presentContent.setText(dataitem.계좌잔액);
         
     }
+
     
     
     
@@ -280,7 +279,25 @@ public class MyPageActivity extends BaseActivity {
 //        circleProgressBar.setProgress(70);
 //*/
 //
-    
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (circleProgressBar != null){
+            circleProgressBar = findViewById(R.id.circleprogressbar);
+            circleProgressBar.setProgressFormatter(new CircleProgressBar.ProgressFormatter() {
+                @Override
+                public CharSequence format(int progress, int max) {
+                    final String DEFAULT_PATTERN = "%d퍼센트";
+                    return String.format(DEFAULT_PATTERN, (int) ((float) progress / (float) max * 100));
+                }
+            });
+            circleProgressBar.setMax(100);
+            circleProgressBar.setProgress(70);
+        }
+    }
+ 
+
     
     public void btnClick(View view) {
         String choice = "";
