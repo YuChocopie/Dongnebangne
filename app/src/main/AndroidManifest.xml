@@ -4,6 +4,10 @@
           package="com.yojeumgeosdeul.dong">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
 
     <application
             android:allowBackup="true"
@@ -26,6 +30,11 @@
         <activity android:name=".ChattyActivity" />
         <activity android:name=".WebViewActivity" />
         <activity android:name=".MainActivity">
+
+            <meta-data
+                    android:name="com.google.android.geo.API_KEY"
+                    android:value="AIzaSyB5cqmuHFA6SrGoC52rtYGrgUrqH_hsHg8" />
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

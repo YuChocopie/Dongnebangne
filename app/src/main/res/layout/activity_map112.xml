@@ -6,31 +6,16 @@
 
               android:orientation="vertical">
 
-
-    <WebView
-
-        android:id="@+id/daum_webview"
-
-        android:layout_width="match_parent"
-
-        android:layout_height="0dp"
-
-        android:layout_weight="4" />
+    <com.google.android.gms.maps.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+    >
 
 
-    <TextView
 
-        android:id="@+id/daum_result"
+    </com.google.android.gms.maps.MapView>
 
-        android:layout_width="match_parent"
-
-        android:layout_height="0dp"
-
-        android:layout_weight="1"
-
-        android:gravity="center"
-
-        android:text="Result" />
 
     <include
             layout="@layout/item_global_bottom"

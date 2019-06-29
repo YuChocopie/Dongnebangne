@@ -16,11 +16,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.dinuscxj.progressbar.CircleProgressBar;
+import com.google.gson.Gson;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,28 +36,46 @@ import static android.view.ViewTreeObserver.*;
 
 public class MyPageActivity extends BaseActivity {
     
-    
     private MyPageRecyclerAdapter adapter;
-
-  //  private static final String DEFAULT_PATTERN = "%d%%";
+    
+    //  private static final String DEFAULT_PATTERN = "%d%%";
     private CircleProgressBar circleProgressBar;
     private View header;
     List<MyPageFunding> dataList = new ArrayList<>();
     RecyclerView recyclerView;
- 
-
-    //  private static final String DEFAULT_PATTERN = "%d%%";
-    CircleProgressBar circleProgressBar;
     
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_page);
         
+        String url = "https://dev-openapi.kbstar.com:8443/hackathon/getAccountBalance";
+        StringRequest request = new StringRequest(
+                Request.Method.GET,
+                url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        processResponse(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+        
+                    }
+                }
+        );
+    
+    
+        request.setShouldCache(false);
+        AppHelper.requestQueue.add(request);
+        
+        
+        
+        
         TextView textCustomer = (TextView) findViewById(R.id.textCustomer);
         TextView textCustomerContent = (TextView) findViewById(R.id.textCustomerContent);
-        TextView textPresentFunding = (TextView) findViewById(R.id.textPresentFunding);
         TextView textPresent = (TextView) findViewById(R.id.textPresent);
         TextView topText = (TextView) findViewById(R.id.topText);
         TextView topClick = (TextView) findViewById(R.id.topClick);
@@ -60,48 +85,27 @@ public class MyPageActivity extends BaseActivity {
         ConstraintLayout constraintLayout = (ConstraintLayout) findViewById(R.id.constraintLayout);
         
         textCustomer.setTypeface(null, Typeface.BOLD);
-
-        textPresent.setTypeface(null,Typeface.BOLD);
-        textPresentFunding.setTypeface(null,Typeface.BOLD);
-    
-    
-    
-    
-    
-    
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+        
+        textPresent.setTypeface(null, Typeface.BOLD);
+        
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        
+        
+        int chk = 1;//사장일 경우 0, 고객일 경우 1
+        if (chk == 0) {
     
-       
-
-
-        int chk = 0;//사장일 경우 0, 고객일 경우 1
-        if(chk == 0){
-
-        textPresent.setTypeface(null, Typeface.BOLD);
-        textPresentFunding.setTypeface(null, Typeface.BOLD);
-        // textPlace.setTypeface(null,Typeface.BOLD);
-        
-        
-        //맨위에 글자 clikc눌렀을 경우
-        topClick.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            
-            }
-        });
-        
-        
-        int chk = 0;//사장일 경우 0, 고객일 경우 1
-        if (chk == 1) {
-
             //click 사업자로 변경
             topText.setText("펀딩 글을 쓰려면 ");
             topText.setTextColor(getResources().getColor(R.color.MainBlue));
             topClick.setTextColor(getResources().getColor(R.color.MainBlue));
-            textPresentFunding.setTextColor(getResources().getColor(R.color.MainBlue));
             
+            //사장님 이미지 변경
+            ImageView imageCustomer = (ImageView) findViewById(R.id.imageCustomer);
+            imageCustomer.setImageResource(R.drawable.ic_char_2);
+    
+    
             //사업자 QR코드 숨기기
             imageQR.setVisibility(View.GONE);
             
@@ -118,37 +122,31 @@ public class MyPageActivity extends BaseActivity {
             topClick.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    Intent i = new Intent(getApplicationContext(),MyPageFundingMake.class);
-                    startActivityForResult(i,101);
+    
+                    Intent i = new Intent(getApplicationContext(), MyPageFundingMake.class);
+                    startActivityForResult(i, 101);
                 }
             });
             //백그라운드 색상변경
             constraintLayout.setBackgroundTintList(getResources().getColorStateList(R.color.MainBlue));
             
             //사업자일 경우(리사이클러뷰)
-            dataList.add(new MyPageFunding("망원동에서 버블티가게","목표금액 : 100,000,000원","펀딩된 자산 : 10,000,000원",
-                    "투자인원 : 2명", "진행률 : 10%","",circleProgressBar));
-            dataList.add(new MyPageFunding("가락시장에서 생선가게","목표금액 : 200,000,000원","펀딩된 자산 : 40,000,000원",
-                    "투자인원 : 3명","진행률 : 20%","",circleProgressBar));
-            dataList.add(new MyPageFunding("가로수길에서 악세사리가게","목표금액 : 150,000,000원","펀딩된 자산 : 100,000,000원",
-                    "투자인원 : 2명","진행률 : 67%","",circleProgressBar));
+            dataList.add(new MyPageFunding("망원동에서 버블티가게", "목표금액 : 100,000,000원", "펀딩된 자산 : 10,000,000원",
+                    "투자인원 : 2명", "진행률 : 10%", "", circleProgressBar));
+            dataList.add(new MyPageFunding("가락시장에서 생선가게", "목표금액 : 200,000,000원", "펀딩된 자산 : 40,000,000원",
+                    "투자인원 : 3명", "진행률 : 20%", "", circleProgressBar));
+            dataList.add(new MyPageFunding("가로수길에서 악세사리가게", "목표금액 : 150,000,000원", "펀딩된 자산 : 100,000,000원",
+                    "투자인원 : 2명", "진행률 : 67%", "", circleProgressBar));
             
-            header = getLayoutInflater().inflate(R.layout.item_mypage_funding,null,false);
-            TextView textMyFunding = (TextView)header.findViewById(R.id.textMyFunding);
+            header = getLayoutInflater().inflate(R.layout.item_mypage_funding, null, false);
+            TextView textMyFunding = (TextView) header.findViewById(R.id.textMyFunding);
             textMyFunding.setVisibility(View.GONE);
-          
-        }
-        else{
-
-                
-                }
-            });
-            
+    
+    
             //백그라운드 색상변경
             constraintLayout.setBackgroundTintList(getResources().getColorStateList(R.color.MainBlue));
         } else {
-
+    
             //고객으로 이름 변경
             textCustomer.setText("고 객");
             textCustomerContent.setText("QR코드로 할인을 받아보세요!");
@@ -158,8 +156,8 @@ public class MyPageActivity extends BaseActivity {
             topText.setText("사업자 등록을 원하면 ");
             topText.setTextColor(getResources().getColor(R.color.MainOrange));
             topClick.setTextColor(getResources().getColor(R.color.MainOrange));
-            textPresentFunding.setTextColor(getResources().getColor(R.color.MainOrange));
-            
+    
+    
             //내 자산현황 보여줌
             textPresent.setText("내 자산 현황");
             textPresent.setTextColor(getResources().getColor(R.color.MainOrange));
@@ -171,21 +169,15 @@ public class MyPageActivity extends BaseActivity {
             imageQR.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+    
                     AlertDialog.Builder builder = new AlertDialog.Builder(MyPageActivity.this);
                     builder.setTitle("QR CODE를 인식해주세요");
                     builder.setView(R.layout.page_dialog);
                     
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();
-
-
-                    
-                    Intent intent = new Intent(String.valueOf(MyPagePopupActivity.class));
-                    startActivity(intent);
-                    
-                    
-
+    
+    
                 }
             });
             
@@ -195,27 +187,26 @@ public class MyPageActivity extends BaseActivity {
             
             //고객일 경우(리사이클러뷰)
     
-            dataList.add(new MyPageFunding("망원동에서 버블티가게","목표금액 : 100,000,000원","펀딩된 자산 : 10,000,000원","내가 펀딩한 자산 : 5,000,000원",
-                    "투자인원 : 2명", "진행률 : 10%",circleProgressBar));
-            dataList.add(new MyPageFunding("가락시장에서 생선가게","목표금액 : 200,000,000원","펀딩된 자산 : 40,000,000원","내가 펀딩한 자산 : 10,000,000원",
-                    "투자인원 : 3명","진행률 : 20%",circleProgressBar));
-            dataList.add(new MyPageFunding("가로수길에서 악세사리가게","목표금액 : 150,000,000원","펀딩된 자산 : 100,000,000원","내가 펀딩한 자산 : 50,000,000원",
-                    "투자인원 : 2명","진행률 : 67%",circleProgressBar));
+            dataList.add(new MyPageFunding("망원동에서 버블티가게", "목표금액 : 100,000,000원", "펀딩된 자산 : 10,000,000원", "내가 펀딩한 자산 : 5,000,000원",
+                    "투자인원 : 2명", "진행률 : 10%", circleProgressBar));
+            dataList.add(new MyPageFunding("가락시장에서 생선가게", "목표금액 : 200,000,000원", "펀딩된 자산 : 40,000,000원", "내가 펀딩한 자산 : 10,000,000원",
+                    "투자인원 : 3명", "진행률 : 20%", circleProgressBar));
+            dataList.add(new MyPageFunding("가로수길에서 악세사리가게", "목표금액 : 150,000,000원", "펀딩된 자산 : 100,000,000원", "내가 펀딩한 자산 : 50,000,000원",
+                    "투자인원 : 2명", "진행률 : 67%", circleProgressBar));
     
             //맨위에 글자 clikc눌렀을 경우 -> 채팅으로
             topClick.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     
-                    Intent i = new Intent(getApplicationContext(),ChattyActivity.class);
+                    Intent i = new Intent(getApplicationContext(), ChattyActivity.class);
                     startActivity(i);
-            
+    
                 }
             });
         }
-
-
-
+        
+        
         adapter = new MyPageRecyclerAdapter(dataList);
         recyclerView.setAdapter(adapter);
     }
@@ -223,16 +214,16 @@ public class MyPageActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 101){
-            if(resultCode == RESULT_OK){
+        if (requestCode == 101) {
+            if (resultCode == RESULT_OK) {
                 String name = data.getStringExtra("name");
                 String location = data.getStringExtra("location");
                 String goal = data.getStringExtra("goal");
                 
                 
-                dataList.add(new MyPageFunding(location + "에서 " + name, "목표금액 : " + goal+"원", "펀딩된 자산 : 0원", "투자인원 : 0원", "진행률 : 0%",
+                dataList.add(new MyPageFunding(location + "에서 " + name, "목표금액 : " + goal + "원", "펀딩된 자산 : 0원", "투자인원 : 0원", "진행률 : 0%",
                         "", circleProgressBar));
-                recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+                recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
                 recyclerView.setLayoutManager(layoutManager);
                 adapter = new MyPageRecyclerAdapter(dataList);
@@ -240,40 +231,19 @@ public class MyPageActivity extends BaseActivity {
             }
         }
     }
-
+    
+    public void processResponse(String response){
+        Gson gson = new Gson();
+        DataList dataList = gson.fromJson(response,DataList.class);
+        Dataitem dataitem = gson.fromJson(response,Dataitem.class);
         
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
+        TextView presentContent = (TextView)findViewById(R.id.presentContent);
+        presentContent.setText(dataitem.계좌잔액);
         
-        List<MyPageFunding> dataList = new ArrayList<>();
-        
-        dataList.add(new MyPageFunding("망원동에서 버블티가게", "목표금액 : 200,000원", "펀딩된 자산 : 10,000원", "내가 펀딩한 자산 : 5,000원",
-                "투자인원 : 10명", "진행률 : 10%", circleProgressBar));
-        dataList.add(new MyPageFunding("가락시장에서 양념가게", "목표금액 : 1,000,000원", "펀딩된 자산 : 20,000원", "내가 펀딩한 자산 : 1000원",
-                "투자인원 : 20명", "진행률 : 20%", circleProgressBar));
-        
-        adapter = new MyPageRecyclerAdapter(dataList);
-        recyclerView.setAdapter(adapter);
     }
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (circleProgressBar != null){
-            circleProgressBar = findViewById(R.id.circleprogressbar);
-            circleProgressBar.setProgressFormatter(new CircleProgressBar.ProgressFormatter() {
-                @Override
-                public CharSequence format(int progress, int max) {
-                    final String DEFAULT_PATTERN = "%d퍼센트";
-                    return String.format(DEFAULT_PATTERN, (int) ((float) progress / (float) max * 100));
-                }
-            });
-            circleProgressBar.setMax(100);
-            circleProgressBar.setProgress(70);
-        }
-    }
-
-
+    
+    
+    
 //    void callGraph() {
 ////        new ViewTreeObserver.OnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
 ////
@@ -310,7 +280,7 @@ public class MyPageActivity extends BaseActivity {
 //        circleProgressBar.setProgress(70);
 //*/
 //
-
+    
     
     public void btnClick(View view) {
         String choice = "";
@@ -332,5 +302,6 @@ public class MyPageActivity extends BaseActivity {
         }
         
     }
+    
     
 }
